@@ -15,6 +15,17 @@ public class DataBaseContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=ShopDb;Integrated Security=True");
+        options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=SchoolShopDb;Integrated Security=True");
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Product>().HasData(
+            new Product
+            {
+                Title = "Cevapcici 10 Stück in Lepina",
+                Created = DateTime.Now,
+                CreatedBy = "Nusret",
+            });
     }
 }
